@@ -1,3 +1,15 @@
+results/
+*.json
+*.csv
+*.log
+*.txt
+*.jsonl
+*.jsonl.gz
+*.jsonl.bz2
+*.jsonl.zip
+*.jsonl.tar
+*.jsonl.tar.gz
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
