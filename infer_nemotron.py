@@ -13,9 +13,10 @@ as Pydantic models and saved to both CSV and JSON.
 Quick start
 -----------
     export NVIDIA_API_KEY="nvapi-..."
-    python infer_nemotron.py                        # defaults
-    python infer_nemotron.py --reasoning             # chain-of-thought ON
-    python infer_nemotron.py --workers 32 --limit 50 # fast test run
+    python infer_nemotron.py                            # defaults
+    python infer_nemotron.py --reasoning                # chain-of-thought ON
+    python infer_nemotron.py --workers 32 --limit 50    # fast test run
+    python infer_nemotron.py --reasoning --workers 32   # fast test run with chain-of-thought
 """
 
 from __future__ import annotations
@@ -55,12 +56,12 @@ class InferenceConfig(BaseModel):
 
     # ── Model & endpoint ──────────────────────────────────────────────────
     model: str = Field(
-        default="nvidia/nemotron-3-nano-30b-a3b",
+        default="nvidia/nemotron-3-super-120b-a12b",
         description="HuggingFace-style model ID served by the NIM endpoint.",
     )
     base_url: str = Field(
         # default="https://integrate.api.nvidia.com/v1",
-        default="https://localhost:8000/v1",
+        default="http://0.0.0.0:8000/v1",
         description="OpenAI-compatible API base URL.",
     )
     api_key: str = Field(
@@ -136,7 +137,7 @@ Final Answer:\s*([A-E])
         description="Sampling temperature.  0 = greedy / deterministic.",
     )
     max_tokens: int = Field(
-        default=262144,
+        default=32000,
         gt=0,
         description="Maximum tokens in the model response.",
     )
