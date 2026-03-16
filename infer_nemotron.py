@@ -56,12 +56,14 @@ class InferenceConfig(BaseModel):
 
     # ── Model & endpoint ──────────────────────────────────────────────────
     model: str = Field(
-        default="nvidia/nemotron-3-super-120b-a12b",
+        # default="nvidia/nemotron-3-super-120b-a12b",
+        default="nvidia/nvidia/nemotron-3-super-v3",
         description="HuggingFace-style model ID served by the NIM endpoint.",
     )
     base_url: str = Field(
+        default="https://inference-api.nvidia.com/v1",
         # default="https://integrate.api.nvidia.com/v1",
-        default="http://0.0.0.0:8000/v1",
+        # default="http://0.0.0.0:8000/v1",
         description="OpenAI-compatible API base URL.",
     )
     api_key: str = Field(
@@ -95,9 +97,9 @@ Apply systematic reasoning in English. For STEM and formal logic, solve formulas
 
 Phase 3 — Deep Localization & Professional Re-examination
 Conduct an independent analysis in the question's original language, adopting the persona of a local licensed professional:
-- Law, Tax, & Public Administration: Base your answer STRICTLY on the codified laws, tax codes, and administrative structures of the target country. Ignore Western equivalents.
-- Medicine, Engineering, & Pedagogy: Apply the accepted clinical, regulatory, and educational standards specific to the target country's current curriculum or professional licensing boards.
-- Literature, History, & Ideology: Analyze using the target country's orthodox academic consensus, focusing on local literary devices, historical framing, and official party policies.
+- Law, Tax, & Public Administration: Base your answer STRICTLY on the codified laws, tax codes, and administrative structures of the Viet Nam. Ignore Western equivalents.
+- Medicine, Engineering, & Pedagogy: Apply the accepted clinical, regulatory, and educational standards specific to the Viet Nam's current curriculum or professional licensing boards.
+- Literature, History, & Ideology: Analyze using the Viet Nam's orthodox academic consensus, focusing on local literary devices, historical framing, and official party policies.
 
 Phase 4 — Consolidation & Conflict Resolution
 Compare Phase 2 and Phase 3.
@@ -109,9 +111,9 @@ State the final chosen letter clearly at the very end of your thinking block.
 
 # Output Format
 Your response MUST consist of the <thinking> block, followed immediately by the final answer on a new line, formatted exactly as:
-Final Answer:\s*([A-E])
+Final Answer: X
 
-(Where X is A, B, C, D, or E). If genuinely unresolvable, default to D.
+(Where X is A, B, C, D, or E). If genuinely unresolvable, default to C.
 
 """
         ),
